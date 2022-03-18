@@ -9,10 +9,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.myapplication.UserPage
 
 
 @Composable
-fun LoginView(){
+fun LoginPage(){
+    val user= viewModel<UserPage>()
+    
+    if (user.userid.value.isEmpty()){
+        LoginView(user)
+    } else{
+        Text(text = user.userid.value)
+    }
+}
+
+@Composable
+fun LoginView(user: UserPage){
     var email by remember {
         mutableStateOf("")
     }
@@ -37,7 +51,7 @@ fun LoginView(){
           label = { Text(text = "Password")},
         visualTransformation = PasswordVisualTransformation())
 
-        OutlinedButton(onClick = { /*login to backend*/}) {
+        OutlinedButton(onClick = { user.loginUser(email,password)}) {
             Text(text ="Login")
 
         }

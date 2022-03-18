@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.myapplication.ui.theme.LoginPage
 import com.example.myapplication.ui.theme.LoginView
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colors.background
                 ) {
-                   LoginView()
+                   LoginPage()
                 }
             }
         }
@@ -34,6 +35,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-        LoginView()
+        LoginPage()
     }
 }
