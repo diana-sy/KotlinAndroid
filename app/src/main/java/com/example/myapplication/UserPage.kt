@@ -10,11 +10,14 @@ import com.google.firebase.ktx.Firebase
 class UserPage :ViewModel() {
     var userid = mutableStateOf("")
 
+
     fun loginUser( email:String, password: String){
         Firebase.auth
             .signInWithEmailAndPassword(email,password)
             .addOnSuccessListener {
-                userid.value = email
+
+
+                userid.value = (" You arte logged with account $email")
             }
     }
 

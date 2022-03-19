@@ -12,6 +12,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.UserPage
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 @Composable
@@ -33,6 +35,11 @@ fun LoginView(user: UserPage){
     var password by remember {
         mutableStateOf("")
     }
+    val fAuth= Firebase.auth
+
+    var info by remember {
+        mutableStateOf("")
+    }
 
     Column (
   modifier = Modifier
@@ -51,9 +58,19 @@ fun LoginView(user: UserPage){
           label = { Text(text = "Password")},
         visualTransformation = PasswordVisualTransformation())
 
-        OutlinedButton(onClick = { user.loginUser(email,password)}) {
-            Text(text ="Login")
+        OutlinedButton(onClick = {
+//             fAuth
+//            .signInWithEmailAndPassword(email,password)
+//            .addOnSuccessListener {
+//                info = "You are logged with account ${it.user!!.email.toString()}"
+
+                user.loginUser(email,password)
+
+
+        }) {
+            Text(text ="log in")
 
         }
+//        Text(text =info)
     }
 }
