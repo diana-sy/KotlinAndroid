@@ -34,6 +34,7 @@ class DessertViewModel: ViewModel() {
             }else{
                 Log.d("***", "ei tanan")
             }
+
         }
     }
 }

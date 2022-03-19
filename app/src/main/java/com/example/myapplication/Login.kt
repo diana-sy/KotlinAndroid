@@ -3,6 +3,7 @@ package com.example.myapplication.ui.theme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -27,6 +28,17 @@ fun LoginPage(){
         Text(text = user.userid.value)
     }
 }
+
+@Composable
+fun MainScaffoldView(){
+    Scaffold(
+        bottomBar = {},
+        topBar = {},
+        content = {}
+    )
+
+}
+
 
 @Composable
 fun LoginView(user: UserPage){
