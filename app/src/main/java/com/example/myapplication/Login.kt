@@ -11,6 +11,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.myapplication.DessertView
 import com.example.myapplication.UserPage
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -35,6 +36,7 @@ fun LoginView(user: UserPage){
     var password by remember {
         mutableStateOf("")
     }
+
     val fAuth= Firebase.auth
 
     var info by remember {
@@ -69,7 +71,6 @@ fun LoginView(user: UserPage){
 
         }) {
             Text(text ="log in")
-
         }
 //        Text(text =info)
     }

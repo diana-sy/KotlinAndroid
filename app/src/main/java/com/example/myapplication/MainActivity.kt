@@ -23,7 +23,8 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colors.background
                 ) {
-                   LoginPage()
+                    DessertView()
+//                   LoginPage()
                 }
             }
         }
