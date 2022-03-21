@@ -1,5 +1,8 @@
 package com.example.myapplication
 
+//import androidx.lifecycle.ViewModel
+//import com.example.myapplication.ui.theme.LoginPage
+//import com.example.myapplication.ui.theme.LoginView
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,9 +13,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.myapplication.ui.theme.LoginPage
-import com.example.myapplication.ui.theme.LoginView
+import androidx.lifecycle.ViewModel
 import com.example.myapplication.ui.theme.MyApplicationTheme
+import com.example.myapplication.ui.theme.UserViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +27,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     DessertView()
-                   LoginPage()
+//                   LoginPage()
+                    ViewModel()
                 }
             }
         }
@@ -36,6 +40,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-        LoginPage()
+//        LoginPage()
     }
 }
