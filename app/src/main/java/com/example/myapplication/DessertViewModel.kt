@@ -1,10 +1,15 @@
 package com.example.myapplication
 
 import android.util.Log
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Button
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.gson.JsonObject
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
@@ -23,15 +28,16 @@ class DessertViewModel: ViewModel() {
             .build()
             .create()
     }
-     fun getRandomDessertData() {
+
+    fun getRandomDessertData() {
         viewModelScope.launch {
             val resp = api.getRandomDessert().awaitResponse()
 
-            if (resp.isSuccessful){
+            if (resp.isSuccessful) {
                 val data: JsonObject? = resp.body()
-                dessert.value = data!!.get ("flavor").asString
+                dessert.value = data!!.get("flavor").asString
 
-            }else{
+            } else {
                 Log.d("***", "ei tanan")
             }
 
