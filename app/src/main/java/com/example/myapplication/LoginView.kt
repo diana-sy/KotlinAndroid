@@ -179,7 +179,7 @@ fun LoginView(userVM: UserViewModel, navController: NavHostController) {
                                 .size(52.dp)
                                 .clickable {
                                     userVM.logInUser(email, password)
-                                    navController.navigate(HOME_ROUTE)
+                                    navController.navigate(PROFILE_ROUTE)
                                 },
                             shape = RoundedCornerShape(30.dp)
                         ) {
@@ -280,14 +280,6 @@ fun LoginView(userVM: UserViewModel, navController: NavHostController) {
                                             .shapes.small.copy(ZeroCornerSize),
                                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
                                     )
-                                }
-                                Column(
-                                    modifier = Modifier
-                                        .width(1.dp)
-                                        .height(168.dp)
-                                        .background(Color(0xFF8B8B8B))
-                                ) {
-
                                 }
                                 Column(
                                     modifier = Modifier.fillMaxWidth(1f)

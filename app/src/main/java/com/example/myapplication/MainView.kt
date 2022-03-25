@@ -37,14 +37,11 @@ val user = fAuth.currentUser
 @Composable
 fun Main() {
     val navController = rememberNavController()
-    val scState = rememberScaffoldState( rememberDrawerState(DrawerValue.Closed) )
 
     Scaffold(
-        scaffoldState = scState,
-        topBar = { TopBarView(navController, scState) },
+        topBar = { TopBarView(navController) },
         bottomBar = { BottomBarView(navController) },
-        content = { MainContentView(navController) },
-        drawerContent = { DrawerLayoutView(navController, scState) }
+        content = { MainContentView(navController) }
     )
 }
 
@@ -53,12 +50,12 @@ fun MainContentView(navController: NavHostController) {
     NavHost(navController = navController, startDestination = HOME_ROUTE) {
         composable(route = HOME_ROUTE) { HomeView() }
         composable(route = LOGINSIGNUP_ROUTE) { LoginView(UserViewModel(), navController) }
-        composable(route = PROFILE_ROUTE) { UserPage() }
+        composable(route = PROFILE_ROUTE) { UserView(navController, UserViewModel()) }
     }
 }
 
 @Composable
-fun TopBarView(navController: NavHostController, scState: ScaffoldState) {
+fun TopBarView(navController: NavHostController) {
 
     var isLoggedIn by remember { mutableStateOf(false) }
     if (user != null) {
@@ -76,23 +73,10 @@ fun TopBarView(navController: NavHostController, scState: ScaffoldState) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Icon(
-            painter = painterResource( R.drawable.ic_icone),
+            painter = painterResource( R.drawable.ic_icone) ,
             contentDescription = "",
-            modifier = Modifier.clickable {
-                scope.launch {
-                    scState.drawerState.open()
-                }
-            }
+            modifier = Modifier.clickable { navController.navigate(LOGINSIGNUP_ROUTE) }
         )
-        if (1==1) {
-            Icon(
-                painter = painterResource( R.drawable.ic_icone) ,
-                contentDescription = "",
-                modifier = Modifier.clickable { navController.navigate(LOGINSIGNUP_ROUTE) }
-            )
-        } else {
-            Box {}
-        }
     }
 }
 
@@ -112,39 +96,4 @@ fun BottomBarView(navController: NavHostController) {
             modifier = Modifier.clickable { navController.navigate(HOME_ROUTE) }
         )
     }
-}
-@Composable
-fun DrawerLayoutView(navController: NavHostController, scState: ScaffoldState) {
-
-    val userVM = viewModel<UserViewModel>()
-    val scope = rememberCoroutineScope()
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
-        OutlinedButton(
-            onClick = {
-                navController.navigate(PROFILE_ROUTE)
-                scope.launch {
-                    scState.drawerState.close()
-                }
-            },
-            modifier = Modifier
-                .padding(10.dp)
-        ) {
-            Text(text = "Profile page")
-        }
-
-        OutlinedButton(onClick = {
-            userVM.logout()
-            scope.launch {
-                scState.drawerState.close()
-            }
-            navController.navigate(HOME_ROUTE)
-        }) {
-            Text(text = "Log out")
-        }
-    }
-
 }
