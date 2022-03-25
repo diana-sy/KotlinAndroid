@@ -21,10 +21,12 @@ class UserViewModel: ViewModel() {
                 .addOnSuccessListener {
                     errorMessage.value = ""
                     successMessage.value = "Tervetuloa!"
+                    Log.d("**********", "Good")
                 }
                 .addOnFailureListener {
                     errorMessage.value = "Incorrect email or password"
                     successMessage.value = ""
+                    Log.d("**********", "Bad")
                 }
         } else {
             errorMessage.value = "Please, fill email and password fields"

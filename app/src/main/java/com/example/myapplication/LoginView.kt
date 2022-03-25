@@ -7,6 +7,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.ZeroCornerSize
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -14,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -90,7 +93,7 @@ fun LoginView(userVM: UserViewModel, navController: NavHostController) {
             Box(
                 modifier = Modifier.background(Color(0xffed4956))
             ) {
-                Logo(com.google.android.gms.base.R.drawable.common_google_signin_btn_icon_dark)
+                Logo(R.drawable.ic_dessert)
             }
         }
         Column(
@@ -107,7 +110,7 @@ fun LoginView(userVM: UserViewModel, navController: NavHostController) {
                 Box(
                     modifier = Modifier.background(Color(0xffed4956))
                 ) {
-                    Logo(com.google.android.gms.base.R.drawable.common_google_signin_btn_icon_dark_focused)
+                    Logo(R.drawable.ic_icone)
                 }
             }
 
@@ -170,7 +173,7 @@ fun LoginView(userVM: UserViewModel, navController: NavHostController) {
                     Row(
                         modifier = Modifier.fillMaxWidth(1f),
                         horizontalArrangement = Arrangement.Center
-                    ) {
+                    ) {//Log in b
                         Card(
                             modifier = Modifier
                                 .size(52.dp)
@@ -186,7 +189,7 @@ fun LoginView(userVM: UserViewModel, navController: NavHostController) {
                                 horizontalArrangement = Arrangement.Center
                             ) {
                                 Icon(
-                                    painter = painterResource(com.google.firebase.appcheck.interop.R.drawable.common_google_signin_btn_icon_dark_normal),
+                                    painter = painterResource(R.drawable.ic_icone),
                                     contentDescription = "",
                                     tint = Color.White
                                 )
@@ -195,6 +198,232 @@ fun LoginView(userVM: UserViewModel, navController: NavHostController) {
                     }
                 }
             }
+            else {
+                Row( // 2
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(0.dp, 0.dp, 0.dp, 20.dp),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Register",
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xffed4956)
+                    )
+                }
+
+                Column( // 3
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp, 0.dp)
+                    ) { // INPUTS
+                        Card(
+                            shape = RoundedCornerShape(30.dp, 30.dp, 30.dp, 30.dp),
+                            border = BorderStroke(0.5.dp, Color(0xffEBEBEB)),
+                            elevation = 10.dp,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(168.dp)
+                        ) {
+                            Row {
+                                Column(
+                                    modifier = Modifier.fillMaxWidth(0.5f)
+                                ) {
+                                    TextField(
+                                        value = firstName,
+                                        onValueChange = { firstName = it },
+                                        placeholder = { Text(text = "First name") },
+                                        colors = TextFieldDefaults
+                                            .textFieldColors(
+                                                backgroundColor = Color.White,
+                                                textColor = Color(0xffed4956),
+                                                placeholderColor = Color(0xffed4956)
+                                            ),
+                                        singleLine = true,
+                                        shape = MaterialTheme
+                                            .shapes.small.copy(ZeroCornerSize),
+                                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
+                                    )
+                                    TextField(
+                                        value = email,
+                                        onValueChange = { email = it },
+                                        placeholder = { Text(text = "Email") },
+                                        colors = TextFieldDefaults
+                                            .textFieldColors(
+                                                backgroundColor = Color.White,
+                                                textColor = Color(0xffed4956),
+                                                placeholderColor = Color(0xffed4956)
+                                            ),
+                                        singleLine = true,
+                                        shape = MaterialTheme
+                                            .shapes.small.copy(ZeroCornerSize),
+                                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+                                    )
+                                    TextField(
+                                        value = phoneNumber,
+                                        onValueChange = { phoneNumber = it },
+                                        placeholder = { Text(text = "Phone number") },
+                                        colors = TextFieldDefaults
+                                            .textFieldColors(
+                                                backgroundColor = Color.White,
+                                                textColor = Color(0xffed4956),
+                                                placeholderColor = Color(0xffed4956)
+                                            ),
+                                        singleLine = true,
+                                        shape = MaterialTheme
+                                            .shapes.small.copy(ZeroCornerSize),
+                                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
+                                    )
+                                }
+                                Column(
+                                    modifier = Modifier
+                                        .width(1.dp)
+                                        .height(168.dp)
+                                        .background(Color(0xFF8B8B8B))
+                                ) {
+
+                                }
+                                Column(
+                                    modifier = Modifier.fillMaxWidth(1f)
+                                ) {
+                                    TextField(
+                                        value = lastName,
+                                        onValueChange = { lastName = it },
+                                        placeholder = { Text(text = "Last name") },
+                                        colors = TextFieldDefaults
+                                            .textFieldColors(
+                                                backgroundColor = Color.White,
+                                                textColor = Color(0xffed4956),
+                                                placeholderColor = Color(0xffed4956)
+                                            ),
+                                        singleLine = true,
+                                        shape = MaterialTheme
+                                            .shapes.small.copy(ZeroCornerSize),
+                                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
+                                    )
+                                    TextField(
+                                        value = password,
+                                        onValueChange = { password = it },
+                                        placeholder = { Text(text = "Password") },
+                                        visualTransformation = PasswordVisualTransformation(),
+                                        colors = TextFieldDefaults
+                                            .textFieldColors(
+                                                backgroundColor = Color.White,
+                                                textColor = Color(0xffed4956),
+                                                placeholderColor = Color(0xffed4956)
+                                            ),
+                                        singleLine = true,
+                                        shape = MaterialTheme
+                                            .shapes.small.copy(ZeroCornerSize),
+                                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+                                    )
+
+                                }
+                            }
+                        }
+                    }
+                    Row( // BUTTON
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(0.dp, 20.dp, 0.dp, 0.dp),
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {}
+                    Card(
+                        modifier = Modifier
+                            .size(52.dp)
+                            .clickable {
+                                userVM.signUpUser(
+                                    email,
+                                    password,
+                                    firstName,
+                                    lastName,
+                                    phoneNumber,
+                                    route
+                                )
+                                navController.navigate(PROFILE_ROUTE)
+                            },
+                        shape = RoundedCornerShape(30.dp)
+                    ) {
+                        Row(
+                            modifier = Modifier.background(Color(0xffed4956)),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_icone),
+                                contentDescription = "",
+                                tint = Color.White
+                            )
+                        }
+                    }
+                }
+        }
+
+            Row( // 4
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(0.dp, 30.dp, 0.dp, 0.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Card(
+                    shape = RoundedCornerShape(0.dp, 30.dp, 30.dp, 0.dp),
+                    border = BorderStroke(0.5.dp, Color(0xffEBEBEB)),
+                    elevation = 10.dp,
+                    modifier = Modifier
+                        .clickable {
+                            isLoginOpen = true
+                        }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .width(110.dp)
+                            .background(if (isLoginOpen) Color(0xffed4956) else Color.White),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "Login",
+                            color = if (isLoginOpen) Color.White else Color(0xffed4956),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp,
+                            modifier = Modifier.padding(0.dp, 10.dp)
+                        )
+                    }
+                }
+                Card(
+                    shape = RoundedCornerShape(30.dp, 0.dp, 0.dp, 30.dp),
+                    border = BorderStroke(0.5.dp, Color(0xffEBEBEB)),
+                    elevation = 10.dp,
+                    modifier = Modifier
+                        .clickable {
+                            isLoginOpen = false
+                        }
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .width(110.dp)
+                            .background(if (isLoginOpen) Color.White else Color(0xffed4956)),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "Register",
+                            color = if (isLoginOpen) Color(0xffed4956) else Color.White,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp,
+                            modifier = Modifier.padding(0.dp, 10.dp)
+                        )
+                    }
+                }
+            }
+
         }}}
 
 //    Column (
