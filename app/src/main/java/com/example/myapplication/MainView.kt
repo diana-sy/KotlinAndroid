@@ -26,6 +26,11 @@ const val LOGINSIGNUP_ROUTE = "logInSignUp"
 const val PROFILE_ROUTE = "profile"
 
 
+
+const val ADMIN_ROUTE = "ADMIN"
+const val USER_ROUTE = "USER"
+
+
 val fAuth = Firebase.auth
 val user = fAuth.currentUser
 
@@ -45,7 +50,7 @@ fun Main() {
 
 @Composable
 fun MainContentView(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = LOGINSIGNUP_ROUTE) {
+    NavHost(navController = navController, startDestination = HOME_ROUTE) {
         composable(route = HOME_ROUTE) { HomeView() }
         composable(route = LOGINSIGNUP_ROUTE) { LoginView(UserViewModel(), navController) }
         composable(route = PROFILE_ROUTE) { UserPage() }
@@ -71,7 +76,7 @@ fun TopBarView(navController: NavHostController, scState: ScaffoldState) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Icon(
-            painter = painterResource( androidx.core.R.drawable.notification_bg ),
+            painter = painterResource( R.drawable.ic_icone),
             contentDescription = "",
             modifier = Modifier.clickable {
                 scope.launch {
@@ -79,9 +84,9 @@ fun TopBarView(navController: NavHostController, scState: ScaffoldState) {
                 }
             }
         )
-        if (!isLoggedIn) {
+        if (1==1) {
             Icon(
-                painter = painterResource( com.google.android.gms.base.R.drawable.common_google_signin_btn_icon_dark_normal ),
+                painter = painterResource( R.drawable.ic_icone) ,
                 contentDescription = "",
                 modifier = Modifier.clickable { navController.navigate(LOGINSIGNUP_ROUTE) }
             )
@@ -102,7 +107,7 @@ fun BottomBarView(navController: NavHostController) {
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         Icon(
-            painter = painterResource(com.google.android.gms.base.R.drawable.common_google_signin_btn_icon_light),
+            painter = painterResource(R.drawable.ic_icone),
             contentDescription = "home",
             modifier = Modifier.clickable { navController.navigate(HOME_ROUTE) }
         )
