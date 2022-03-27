@@ -2,6 +2,7 @@ package com.example.myapplication
 
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -24,6 +25,7 @@ import kotlinx.coroutines.launch
 const val HOME_ROUTE = "home"
 const val LOGINSIGNUP_ROUTE = "logInSignUp"
 const val PROFILE_ROUTE = "profile"
+const val USER_INFO = "userInfo"
 
 
 
@@ -48,9 +50,10 @@ fun Main() {
 @Composable
 fun MainContentView(navController: NavHostController) {
     NavHost(navController = navController, startDestination = HOME_ROUTE) {
-        composable(route = HOME_ROUTE) { HomeView() }
+        composable(route = HOME_ROUTE) { HomeView(navController) }
         composable(route = LOGINSIGNUP_ROUTE) { LoginView(UserViewModel(), navController) }
         composable(route = PROFILE_ROUTE) { UserView(navController, UserViewModel()) }
+        composable(route = USER_INFO){ProfilePageView()}
     }
 }
 
@@ -67,16 +70,16 @@ fun TopBarView(navController: NavHostController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFFFF5722))
+            .background(Color(0xFFFF4466))
             .padding(10.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Icon(
-            painter = painterResource( R.drawable.ic_icone) ,
-            contentDescription = "",
-            modifier = Modifier.clickable { navController.navigate(LOGINSIGNUP_ROUTE) }
-        )
+//        Icon(
+//            painter = painterResource( R.drawable.ic_icone) ,
+//            contentDescription = "",
+//            modifier = Modifier.clickable { navController.navigate(LOGINSIGNUP_ROUTE) }
+//        )
     }
 }
 
@@ -85,15 +88,16 @@ fun BottomBarView(navController: NavHostController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFFFF5722))
+            .background(Color(0xFFFF4466))
             .padding(10.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         Icon(
-            painter = painterResource(R.drawable.ic_icone),
+            painter = painterResource(R.drawable.ic_home),
             contentDescription = "home",
             modifier = Modifier.clickable { navController.navigate(HOME_ROUTE) }
         )
     }
 }
+

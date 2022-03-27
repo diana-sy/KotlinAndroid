@@ -92,6 +92,7 @@ fun LoginView(userVM: UserViewModel, navController: NavHostController) {
         ) {
             Box(
                 modifier = Modifier.background(Color(0xffed4956))
+                    .padding(2.dp, 2.dp )
             ) {
                 Logo(R.drawable.ic_dessert)
             }
@@ -110,7 +111,7 @@ fun LoginView(userVM: UserViewModel, navController: NavHostController) {
                 Box(
                     modifier = Modifier.background(Color(0xffed4956))
                 ) {
-                    Logo(R.drawable.ic_icone)
+                    Logo(R.drawable.ic_cake)
                 }
             }
 
@@ -189,7 +190,7 @@ fun LoginView(userVM: UserViewModel, navController: NavHostController) {
                                 horizontalArrangement = Arrangement.Center
                             ) {
                                 Icon(
-                                    painter = painterResource(R.drawable.ic_icone),
+                                    painter = painterResource(R.drawable.ic_login),
                                     contentDescription = "",
                                     tint = Color.White
                                 )
